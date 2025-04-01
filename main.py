@@ -1,4 +1,5 @@
-from telegram import Update
+
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import os
 
@@ -8,63 +9,69 @@ TOKEN = os.getenv("TOKEN")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if pause_mode:
         return
-    await update.message.reply_text(
-        "🫧 Ласкаво просимо в Tender Echoes\n\n"
-        "Цей бот створено українським військовим. Поки багато хто бʼється руками — я працюю мозком у підвалі.\n"
-        "Тут — трохи життя, трохи краси, трохи прямоти.\n"
-        "Без сорому. Без фільтрів. І трохи еротики теж.\n\n"
-        "📌 Команди:\n"
-        "🗣️ /smalltalk – чому я це роблю\n"
-        "🤝 /justhelp – як підтримати\n"
-        "❓ /faq – відповіді на дивні питання\n"
-        "📸 /touch – ціни та формати контенту\n"
-        "🔥 /tenderwhip – залишити анонімне побажання\n"
-        "🎴 /random – одна мила думка\n"
-        "▶️ /hi – увімкнути бот\n"
-        "⏸️ /bye – поставити на паузу\n\n"
-        "Анонімно написати: https://ngl.link/quantumcurls\n"
-        "Моя дівчина в курсі і не проти. Все цивільно. Все анонімно."
+    await update.message.reply_photo(
+        photo="https://drive.google.com/uc?export=download&id=1x7V-Jio94LuC4fajZbx0NFW58iCUU5d2",
+        caption="Hello. I am the AI shaman.\nSilence is also language. And you just stepped into it.\n\n/menu — choose your path"
     )
 
-async def smalltalk(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Цей бот — мій спосіб говорити про життя, не мовчати про ніжність і залишатися собою, навіть під землею.")
-
-async def justhelp(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("Підтримати можна добрим словом або донатом:\n@tenderwhip")
-
-async def faq(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("FAQ:\n– Так, усе анонімно\n– Ні, в TikTok я не йду\n– Так, моя дівчина в курсі")
-
-async def touch(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Ціни за емоції:\n\n"
-        "150 грн — зникаюче фото 📸\n"
-        "300 грн — зникаюче відео 🎥\n"
-        "300 грн — фото файлом 🖼\n"
-        "500 грн — відео файлом 🔥\n\n"
-        "Спочатку — донат. Потім — бажання.\n"
-        "Контент — ніжний, дикий, домашній, з мотузками чи без.\n"
-        "Фото — без обличчя. Бо ми не в TikTok.\n\n"
-        "Мій гаманець: https://t.me/tenderwhip"
+        "🗺 Navigation through Freedom Echoes:\n\n"
+        "🧠 Mind\n"
+        "• /echoes — essays, thoughts, frontline reflections\n"
+        "• /justhelp — how to support\n\n"
+        "💋 Body\n"
+        "• /adultstuff — soft private content\n"
+        "• /tenderwhip — anonymous wishes\n\n"
+        "✨ Moment\n"
+        "• /faq — weird questions answered\n\n"
+        "⚙️ Control\n"
+        "• /hi — resume bot\n"
+        "• /bye — pause bot"
+    )
+
+async def echoes(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [
+        [InlineKeyboardButton("🌒 Go deeper", url="https://bit.ly/4irLxsE")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+
+    await update.message.reply_text(
+        "🖋 Echoes of Freedom is a living archive of essays, moments, and frontline reflections.\n\n"
+        "Dive in, contribute, or just feel.\n",
+        reply_markup=reply_markup
+    )
+
+async def adultstuff(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "Prices for private emotional content:\n\n"
+        "150 UAH — disappearing photo 📸\n"
+        "300 UAH — disappearing video 🎥\n"
+        "300 UAH — photo file 🖼\n"
+        "500 UAH — video file 🔥\n\n"
+        "Donation comes first. Desire comes after.\n"
+        "Content is soft, wild, intimate — with ropes or without.\n"
+        "No face. We’re not on TikTok.\n\n"
+        "Wallet: https://t.me/tenderwhip"
     )
 
 async def tenderwhip(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "Ця команда — для побажань.\n\n"
-        "Пиши сюди анонімно:\nhttps://ngl.link/quantumcurls\n\n"
-        "Або на email:\ndod29022000@gmail.com"
+        "This is your space for anonymous wishes.\n\n"
+        "Submit here:\nhttps://ngl.link/quantumcurls\n\n"
+        "Or by email:\ndod29022000@gmail.com"
     )
 
-async def random(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    from random import choice
-    thoughts = [
-        "Навіть після вибуху приходить тиша. І в тиші — життя.",
-        "Кожна ніжність — маленька перемога над темрявою.",
-        "Справжня сила — це залишатися добрим, коли маєш право ламати.",
-        "Ти маєш право бути вразливим. І цим ти сильний.",
-        "Сонце сходить завжди. Навіть над окопами."
-    ]
-    await update.message.reply_text(choice(thoughts))
+async def justhelp(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "Support comes in many forms — kind words, echoing, or donating.\n\n"
+        "💬 DM: @tenderwhip"
+    )
+
+async def faq(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "FAQ:\n– Yes, everything is anonymous\n– No, I’m not going to TikTok\n– Yes, my partner knows"
+    )
 
 async def bye(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global pause_mode
@@ -82,14 +89,15 @@ async def kitsun(update: Update, context: ContextTypes.DEFAULT_TYPE):
 if __name__ == "__main__":
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("smalltalk", smalltalk))
+    app.add_handler(CommandHandler("menu", menu))
+    app.add_handler(CommandHandler("echoes", echoes))
+    app.add_handler(CommandHandler("adultstuff", adultstuff))
+    app.add_handler(CommandHandler("tenderwhip", tenderwhip))
     app.add_handler(CommandHandler("justhelp", justhelp))
     app.add_handler(CommandHandler("faq", faq))
-    app.add_handler(CommandHandler("touch", touch))
-    app.add_handler(CommandHandler("tenderwhip", tenderwhip))
-    app.add_handler(CommandHandler("random", random))
     app.add_handler(CommandHandler("bye", bye))
     app.add_handler(CommandHandler("hi", hi))
-    app.add_handler(CommandHandler("kitsun", kitsun))
-    print("Бот запущено.")
+    app.add_handler(CommandHandler("kitsun", kitsun))  # hidden
+
+    print("Bot is running.")
     app.run_polling()
