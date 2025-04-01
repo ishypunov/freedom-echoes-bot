@@ -10,7 +10,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if pause_mode:
         return
     await update.message.reply_photo(
-        photo="https://i.imgur.com/ZOUvSGg.jpg",
+        photo="https://drive.google.com/uc?export=download&id=1x7V-Jio94LuC4fajZbx0NFW58iCUU5d2",
         caption="Hello. I am the AI shaman.\nSilence is also language. And you just stepped into it.\n\n/menu — choose your path"
     )
 
