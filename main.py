@@ -18,24 +18,19 @@ async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "🗺 Navigation through Freedom Echoes:\n\n"
         "🧠 Mind\n"
-        "• /echoes — essays, thoughts, frontline reflections\n"
-        "• /justhelp — how to support\n\n"
+        "• /echoes — essays, frontline reflections\n"
+        "• /faq — weird questions answered\n"
+        "• /follow — stay in the loop\n\n"
         "💋 Body\n"
-        "• /adultstuff — soft private content\n"
+        "• /touch — soft chaos pricing\n"
         "• /tenderwhip — anonymous wishes\n\n"
-        "✨ Moment\n"
-        "• /faq — weird questions answered\n\n"
-        "⚙️ Control\n"
-        "• /hi — resume bot\n"
-        "• /bye — pause bot"
+        "🌬 Spirit\n"
+        "• /justhelp — how to donate, support the flow"
     )
 
 async def echoes(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [
-        [InlineKeyboardButton("🌒 Go deeper", url="https://bit.ly/4irLxsE")]
-    ]
+    keyboard = [[InlineKeyboardButton("🌒 Go deeper", url="https://bit.ly/4irLxsE")]]
     reply_markup = InlineKeyboardMarkup(keyboard)
-
     await update.message.reply_text(
         "🖋 Echoes of Freedom is a living archive of essays, moments, and frontline reflections.\n\n"
         "Dive in, contribute, or just feel.\n",
@@ -86,6 +81,27 @@ async def hi(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def kitsun(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("😘😘")
 
+async def touch(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "💅 Soft chaos pricing:\n\n"
+        "• 150 UAH — moment caught 📸 (vanishing)\n"
+        "• 300 UAH — motion in silence 🎥 (vanishing)\n"
+        "• 300 UAH — still touch 🖼 (file)\n"
+        "• 500 UAH — slow burn 🔥 (video file)\n\n"
+        "Whisper first. Then donate.\n"
+        "DM: @tenderwhip"
+    )
+
+async def follow(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🔗 Stay in the loop:\n"
+        "• Telegram: https://t.me/freedomechoes\n"
+        "• Instagram: https://instagram.com/echosoffreedomua\n"
+        "• Linktree: https://linktr.ee/freedomechoes\n"
+        "• Facebook: https://www.facebook.com/EchoesOfUAFreedom/\n"
+        "• YouTube: https://youtube.com/channel/Gigabarb"
+    )
+
 if __name__ == "__main__":
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
@@ -97,7 +113,9 @@ if __name__ == "__main__":
     app.add_handler(CommandHandler("faq", faq))
     app.add_handler(CommandHandler("bye", bye))
     app.add_handler(CommandHandler("hi", hi))
-    app.add_handler(CommandHandler("kitsun", kitsun))  # hidden
+    app.add_handler(CommandHandler("kitsun", kitsun))
+    app.add_handler(CommandHandler("touch", touch))
+    app.add_handler(CommandHandler("follow", follow))
 
     print("Bot is running.")
     app.run_polling()
