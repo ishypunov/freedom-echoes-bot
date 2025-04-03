@@ -1,5 +1,5 @@
 
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, InputFile
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import os
 
@@ -9,8 +9,9 @@ TOKEN = os.getenv("TOKEN")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if pause_mode:
         return
-    await update.message.reply_text(
-        "Hello. I am the AI shaman.\nSilence is violence. But here we speak softly.\n\n/menu — choose your path"
+    await update.message.reply_photo(
+        photo="https://drive.google.com/uc?export=download&id=1x7V-Jio94LuC4fajZbx0NFW58iCUU5d2",
+        caption="Hello. I am the AI shaman.\nSilence is also language. And you just stepped into it.\n\n/menu — choose your path"
     )
 
 async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -50,15 +51,10 @@ async def adultstuff(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def tenderwhip(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [
-        [InlineKeyboardButton("Send an anonymous wish", url="https://tellonym.me/freedom.echoes")]
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
     await update.message.reply_text(
         "This is your space for anonymous wishes.\n\n"
-        "Click the button below and tell me something I should feel.",
-        reply_markup=reply_markup
+        "Submit here:\nhttps://ngl.link/quantumcurls\n\n"
+        "Or by email:\ndod29022000@gmail.com"
     )
 
 async def justhelp(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -68,19 +64,8 @@ async def justhelp(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def faq(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [
-        [InlineKeyboardButton("Ask me something", url="https://ngl.link/quantumcurls")]
-    ]
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
     await update.message.reply_text(
-        "FAQ:\n"
-        "– Is this anonymous? Yes, I don't chase ghosts.\n"
-        "– Who are you? A mix of soldier, artist, and rope-handler.\n"
-        "– Is your partner aware? Yes. This space is built on honesty.\n"
-        "– Will you post on TikTok? No. That’s not where softness lives.\n"
-        "– Can I ask something personal? Sure — hit the button below.",
-        reply_markup=reply_markup
+        "FAQ:\n– Yes, everything is anonymous\n– No, I’m not going to TikTok\n– Yes, my partner knows"
     )
 
 async def bye(update: Update, context: ContextTypes.DEFAULT_TYPE):
