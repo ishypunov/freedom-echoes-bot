@@ -1,4 +1,3 @@
-
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 import os
@@ -9,9 +8,8 @@ TOKEN = os.getenv("TOKEN")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if pause_mode:
         return
-    await update.message.reply_photo(
-        photo="https://drive.google.com/uc?export=download&id=1x7V-Jio94LuC4fajZbx0NFW58iCUU5d2",
-        caption="Hello. I am the AI shaman.\nSilence is also language. And you just stepped into it.\n\n/menu — choose your path"
+    await update.message.reply_text(
+        "Hello. I am the AI shaman.\nSilence is also language. And you just stepped into it.\n\n/menu — choose your path"
     )
 
 async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -58,14 +56,40 @@ async def tenderwhip(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def justhelp(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    reply_markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("❤️ Donate via Donorbox", url="https://donorbox.org/echoes-of-freedom")]
+    ])
     await update.message.reply_text(
         "Support comes in many forms — kind words, echoing, or donating.\n\n"
-        "💬 DM: @tenderwhip"
+        "💸 PayPal / Wise: iishypunov@gmail.com\n"
+        "🌐 Linktree: https://linktr.ee/freedomechoes",
+        reply_markup=reply_markup
     )
 
 async def faq(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         "FAQ:\n– Yes, everything is anonymous\n– No, I’m not going to TikTok\n– Yes, my partner knows"
+    )
+
+async def follow(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🔗 Stay in the loop:\n"
+        "• Telegram: https://t.me/freedomechoes\n"
+        "• Instagram: https://instagram.com/echosoffreedomua\n"
+        "• Linktree: https://linktr.ee/freedomechoes\n"
+        "• Facebook: https://www.facebook.com/EchoesOfUAFreedom/\n"
+        "• YouTube: https://youtube.com/channel/Gigabarb"
+    )
+
+async def touch(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "💅 Soft chaos pricing:\n\n"
+        "• 150 UAH — moment caught 📸 (vanishing)\n"
+        "• 300 UAH — motion in silence 🎥 (vanishing)\n"
+        "• 300 UAH — still touch 🖼 (file)\n"
+        "• 500 UAH — slow burn 🔥 (video file)\n\n"
+        "Whisper first. Then donate.\n"
+        "DM: @tenderwhip"
     )
 
 async def bye(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -81,27 +105,6 @@ async def hi(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def kitsun(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("😘😘")
 
-async def touch(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "💅 Soft chaos pricing:\n\n"
-        "• 150 UAH — moment caught 📸 (vanishing)\n"
-        "• 300 UAH — motion in silence 🎥 (vanishing)\n"
-        "• 300 UAH — still touch 🖼 (file)\n"
-        "• 500 UAH — slow burn 🔥 (video file)\n\n"
-        "Whisper first. Then donate.\n"
-        "DM: @tenderwhip"
-    )
-
-async def follow(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "🔗 Stay in the loop:\n"
-        "• Telegram: https://t.me/freedomechoes\n"
-        "• Instagram: https://instagram.com/echosoffreedomua\n"
-        "• Linktree: https://linktr.ee/freedomechoes\n"
-        "• Facebook: https://www.facebook.com/EchoesOfUAFreedom/\n"
-        "• YouTube: https://youtube.com/channel/Gigabarb"
-    )
-
 if __name__ == "__main__":
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
@@ -111,11 +114,11 @@ if __name__ == "__main__":
     app.add_handler(CommandHandler("tenderwhip", tenderwhip))
     app.add_handler(CommandHandler("justhelp", justhelp))
     app.add_handler(CommandHandler("faq", faq))
-    app.add_handler(CommandHandler("bye", bye))
-    app.add_handler(CommandHandler("hi", hi))
-    app.add_handler(CommandHandler("kitsun", kitsun))
-    app.add_handler(CommandHandler("touch", touch))
     app.add_handler(CommandHandler("follow", follow))
+    app.add_handler(CommandHandler("touch", touch))
+    app.add_handler(CommandHandler("hi", hi))
+    app.add_handler(CommandHandler("bye", bye))
+    app.add_handler(CommandHandler("kitsun", kitsun))
 
     print("Bot is running.")
     app.run_polling()
