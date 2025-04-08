@@ -150,23 +150,7 @@ async def uplink(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 # Обробка callback-кнопок
-async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    query = update.callback_query
-    await query.answer()
-    data = query.data
-    handler_map = {
-        'tunein': tunein,
-        'ua': ua,
-        'bandmap': bandmap,
-        'signal': signal,
-        'static': static,
-        'relay': relay,
-        'pulse': pulse,
-        'drift': drift,
-        'uplink': uplink
-    }
-    if data in handler_map:
-        await handler_map[data](update, context)
+
 
 # Запуск бота
 if __name__ == "__main__":
@@ -183,7 +167,7 @@ if __name__ == "__main__":
     app.add_handler(CommandHandler("drift", drift))
     app.add_handler(CommandHandler("uplink", uplink))
 
-    app.add_handler(CallbackQueryHandler(handle_callback))
+    
 
     print("Radio Resistance Bot is live.")
     app.run_polling()
