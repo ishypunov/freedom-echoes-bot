@@ -1,27 +1,29 @@
-# EchoTenderBot
+# 📻 EchoTenderBot
 
-Encrypted Telegram bot broadcasting emotional and cultural resistance.
+Telegram bot broadcasting encrypted cultural signals from the resistance wave 🌌
 
-## Commands
-
-- /start – Launch the bot and open button menu
-- /tunein – Intro broadcast with radio vibe
-- /ua – Ukrainian project links
-- /bandmap – Map of available frequencies
-- /signal – Archive and essays
-- /static – FAQ & Join form
+## 🎙 Commands
+- /start – Launch bot and open menu
+- /tunein – Intro with radio vibes and music
+- /ua – Ukrainian projects, Telegram channels, docs
+- /bandmap – All bot commands as a frequency map
+- /signal – Archives and messages
+- /static – FAQ and join form
 - /relay – Social media
-- /pulse – Anonymous submissions
-- /drift – NSFW content access
-- /uplink – Donations
+- /pulse – Anonymous messages (NGL, Telegram)
+- /drift – Adult content, consensual, encrypted
+- /uplink – Support and donations
 
-## Setup
+## ⚙️ How to Run
+1. Create a `.env` file from `.env.example`
+2. Add your bot token there.
+3. Run the bot locally:
 
-1. Create `.env` file from `.env.example`
-2. Paste your Telegram bot token.
-3. Run:
-
-```
+```bash
 pip install -r requirements.txt
 python main.py
 ```
+
+Or deploy it to [Railway](https://railway.app), Render or Heroku.
+
+Built with ❤️ for underground culture & encrypted expression.
