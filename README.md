@@ -1,33 +1,27 @@
-# Radio Resistance Bot
+# EchoTenderBot
 
-A poetic, encrypted Telegram bot broadcasting signals of resistance and emotion.
+Encrypted Telegram bot broadcasting emotional and cultural resistance.
 
-## 🎛 Available Commands
+## Commands
 
-- /start — Launch bot & show full button menu
-- /tunein — Atmospheric intro with music
-- /ua — Ukrainian resistance links
-- /bandmap — Map of all commands
-- /signal — Frontline archive
-- /static — FAQ and Join form
-- /relay — Social channels
-- /pulse — Anonymous form (NGL / Email)
-- /drift — Adult content info
-- /uplink — Support via PayPal, Donorbox
+- /start – Launch the bot and open button menu
+- /tunein – Intro broadcast with radio vibe
+- /ua – Ukrainian project links
+- /bandmap – Map of available frequencies
+- /signal – Archive and essays
+- /static – FAQ & Join form
+- /relay – Social media
+- /pulse – Anonymous submissions
+- /drift – NSFW content access
+- /uplink – Donations
 
-## 🔌 Setup
+## Setup
 
-1. Clone the repo
-2. Add your `.env` file with:
-   ```
-   TOKEN=your_bot_token
-   ```
-3. Run with:
+1. Create `.env` file from `.env.example`
+2. Paste your Telegram bot token.
+3. Run:
 
-   ```bash
-   pip install python-telegram-bot
-   python main.py
-   ```
-
-Everything is encrypted. Nothing is forgotten.
-
+```
+pip install -r requirements.txt
+python main.py
+```
