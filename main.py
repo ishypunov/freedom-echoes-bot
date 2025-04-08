@@ -1,124 +1,189 @@
+
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 import os
 
 pause_mode = False
 TOKEN = os.getenv("TOKEN")
 
+# /start — головне меню з усіма кнопками
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if pause_mode:
         return
-    await update.message.reply_text(
-        "Hello. I am the AI shaman.\nSilence is also language. And you just stepped into it.\n\n/menu — choose your path"
-    )
-
-async def menu(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "🗺 Navigation through Freedom Echoes:\n\n"
-        "🧠 Mind\n"
-        "• /echoes — essays, frontline reflections\n"
-        "• /faq — weird questions answered\n"
-        "• /follow — stay in the loop\n\n"
-        "💋 Body\n"
-        "• /touch — soft chaos pricing\n"
-        "• /tenderwhip — anonymous wishes\n\n"
-        "🌬 Spirit\n"
-        "• /justhelp — how to donate, support the flow"
-    )
-
-async def echoes(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    keyboard = [[InlineKeyboardButton("🌒 Go deeper", url="https://bit.ly/4irLxsE")]]
+    keyboard = [
+        [InlineKeyboardButton("🎙️ /tunein", callback_data='tunein')],
+        [InlineKeyboardButton("🇺🇦 /ua", callback_data='ua')],
+        [InlineKeyboardButton("🗺 /bandmap", callback_data='bandmap')],
+        [InlineKeyboardButton("📡 /signal", callback_data='signal')],
+        [InlineKeyboardButton("📖 /static", callback_data='static')],
+        [InlineKeyboardButton("🛰 /relay", callback_data='relay')],
+        [InlineKeyboardButton("🎛 /pulse", callback_data='pulse')],
+        [InlineKeyboardButton("🎚 /drift", callback_data='drift')],
+        [InlineKeyboardButton("🔌 /uplink", callback_data='uplink')]
+    ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "🖋 Echoes of Freedom is a living archive of essays, moments, and frontline reflections.\n\n"
-        "Dive in, contribute, or just feel.\n",
+        "📡 Transmission connected.\nWelcome to the Resistance Frequency.\n\nChoose your signal:",
         reply_markup=reply_markup
     )
 
-async def adultstuff(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# /tunein
+async def tunein(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [[InlineKeyboardButton("🎧 Tune it", url="https://youtu.be/nA-GnVrvFtw?si=fXDqtaTGCF7txWel")]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "Prices for private emotional content:\n\n"
-        "150 UAH — disappearing photo 📸\n"
-        "300 UAH — disappearing video 🎥\n"
-        "300 UAH — photo file 🖼\n"
-        "500 UAH — video file 🔥\n\n"
-        "Donation comes first. Desire comes after.\n"
-        "Content is soft, wild, intimate — with ropes or without.\n"
-        "No face. We’re not on TikTok.\n\n"
-        "Wallet: https://t.me/tenderwhip"
+        "🎙️ You’re tuned in.\n\n"
+        "This is the clandestine frequency of free voices.\n"
+        "The static hides truth, the silence screams louder.\n\n"
+        "Use /bandmap to navigate the spectrum.",
+        reply_markup=reply_markup
     )
 
-async def tenderwhip(update: Update, context: ContextTypes.DEFAULT_TYPE):
+# /ua
+async def ua(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [
+        [InlineKeyboardButton("📄 Project Doc", url="https://docs.google.com/document/d/1QY_kXlGk7ble4QTzPcJdNYtW6skksF5wz_ILEtHg82E/edit?usp=drivesdk")],
+        [InlineKeyboardButton("🇺🇦 Tymko's HQ", url="https://t.me/tymkoshelban")],
+        [InlineKeyboardButton("🌞 Sunshine Reggae", url="https://t.me/sunshinereggaee")],
+        [InlineKeyboardButton("📡 Freedom Echoes", url="https://t.me/freedomechoes")],
+        [InlineKeyboardButton("🌱 Tender Ukrainisation", url="https://t.me/tenderukrainisation")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "This is your space for anonymous wishes.\n\n"
-        "Submit here:\nhttps://ngl.link/quantumcurls\n\n"
-        "Or by email:\ndod29022000@gmail.com"
+        "🇺🇦 Ukrainian Frequency:\n\n"
+        "Signals from cultural frontlines. Projects, voices, resistance.\nChoose your channel:",
+        reply_markup=reply_markup
     )
 
-async def justhelp(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    reply_markup = InlineKeyboardMarkup([
-        [InlineKeyboardButton("❤️ Donate via Donorbox", url="https://donorbox.org/echoes-of-freedom")]
-    ])
+# /bandmap
+async def bandmap(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [
+        [InlineKeyboardButton("🎙️ /tunein", callback_data='tunein')],
+        [InlineKeyboardButton("📡 /signal", callback_data='signal')],
+        [InlineKeyboardButton("📖 /static", callback_data='static')],
+        [InlineKeyboardButton("🛰 /relay", callback_data='relay')],
+        [InlineKeyboardButton("🎛 /pulse", callback_data='pulse')],
+        [InlineKeyboardButton("🎚 /drift", callback_data='drift')],
+        [InlineKeyboardButton("🔌 /uplink", callback_data='uplink')],
+        [InlineKeyboardButton("🇺🇦 /ua", callback_data='ua')]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text(
-        "Support comes in many forms — kind words, echoing, or donating.\n\n"
+        "📻 Resistance Bandmap\n\nChoose your frequency. Tune wisely.",
+        reply_markup=reply_markup
+    )
+
+# /signal
+async def signal(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [[InlineKeyboardButton("🧾 Decode the message", url="https://bit.ly/freedomechoes")]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "📡 Signal received:\n\n"
+        "Fragments from the frontline.\nEchoes etched in silence.\n\n"
+        "Explore the archive below.",
+        reply_markup=reply_markup
+    )
+
+# /static
+async def static(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [[InlineKeyboardButton("🛰 Apply to join", url="https://forms.gle/xob4piEzFbLKAuSP9")]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "📖 Static on the line:\n\n"
+        "— Is this anonymous?\nYes. The air doesn’t remember.\n\n"
+        "— Can I share this?\nOnly with those who listen between the waves.\n\n"
+        "— Who are you?\nA signal. A shimmer. A shadow of resistance.\n\n"
+        "— Want to join?\nTap the satellite.",
+        reply_markup=reply_markup
+    )
+
+# /relay
+async def relay(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🛰 Relay stations online:\n\n"
+        "🔗 Telegram: https://t.me/tymkoshelban\n"
+        "📸 Instagram: https://instagram.com/echosoffreedomua\n"
+        "🌐 Linktree: https://linktr.ee/freedomechoes\n"
+        "📘 Facebook: https://www.facebook.com/EchoesOfUAFreedom/\n"
+        "▶️ YouTube: https://youtube.com/@freedomechoesua"
+    )
+
+# /pulse
+async def pulse(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [[InlineKeyboardButton("🎛 Send a Pulse", url="https://ngl.link/quantumcurls")]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "🎛 Transmit your anonymous pulse:\n\n"
+        "Whisper into the void. Let the signal find its shape.\n\n"
+        "📧 Email: dod29022000@gmail.com\n"
+        "💬 Telegram: https://t.me/tenderwhip",
+        reply_markup=reply_markup
+    )
+
+# /drift
+async def drift(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🎚 Drift into the encrypted zone:\n\n"
+        "This frequency transmits adult content.\n"
+        "Soft, wild, visual — always intimate.\n"
+        "My partner is aware and cool with it.\n\n"
+        "Suggested donations:\n"
+        "• 150 UAH — vanishing photo 📸\n"
+        "• 300 UAH — vanishing video 🎥\n"
+        "• 300 UAH — photo file 🖼\n"
+        "• 500 UAH — video file 🔥\n\n"
+        "No faces. No noise. Only signal.\n"
+        "DM for access: @tenderwhip"
+    )
+
+# /uplink
+async def uplink(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    keyboard = [[InlineKeyboardButton("❤️ Donate via Donorbox", url="https://donorbox.org/echoes-of-freedom")]]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "🔌 Uplink your energy to the signal:\n\n"
         "💸 PayPal / Wise: iishypunov@gmail.com\n"
-        "🌐 Linktree: https://linktr.ee/freedomechoes",
+        "🌐 Linktree: https://linktr.ee/freedomechoes\n\n"
+        "This transmission is powered by shared intention.\n"
+        "Every coin, a wave.\nEvery wave, a whisper.",
         reply_markup=reply_markup
     )
 
-async def faq(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "FAQ:\n– Yes, everything is anonymous\n– No, I’m not going to TikTok\n– Yes, my partner knows"
-    )
+# Обробка callback-кнопок
+async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = update.callback_query
+    await query.answer()
+    data = query.data
+    handler_map = {
+        'tunein': tunein,
+        'ua': ua,
+        'bandmap': bandmap,
+        'signal': signal,
+        'static': static,
+        'relay': relay,
+        'pulse': pulse,
+        'drift': drift,
+        'uplink': uplink
+    }
+    if data in handler_map:
+        await handler_map[data](update, context)
 
-async def follow(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "🔗 Stay in the loop:\n"
-        "• Telegram: https://t.me/freedomechoes\n"
-        "• Instagram: https://instagram.com/echosoffreedomua\n"
-        "• Linktree: https://linktr.ee/freedomechoes\n"
-        "• Facebook: https://www.facebook.com/EchoesOfUAFreedom/\n"
-        "• YouTube: https://youtube.com/channel/Gigabarb"
-    )
-
-async def touch(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
-        "💅 Soft chaos pricing:\n\n"
-        "• 150 UAH — moment caught 📸 (vanishing)\n"
-        "• 300 UAH — motion in silence 🎥 (vanishing)\n"
-        "• 300 UAH — still touch 🖼 (file)\n"
-        "• 500 UAH — slow burn 🔥 (video file)\n\n"
-        "Whisper first. Then donate.\n"
-        "DM: @tenderwhip"
-    )
-
-async def bye(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    global pause_mode
-    pause_mode = True
-    await update.message.reply_text("Autoposting paused.")
-
-async def hi(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    global pause_mode
-    pause_mode = False
-    await update.message.reply_text("Autoposting resumed.")
-
-async def kitsun(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("😘😘")
-
+# Запуск бота
 if __name__ == "__main__":
     app = ApplicationBuilder().token(TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("menu", menu))
-    app.add_handler(CommandHandler("echoes", echoes))
-    app.add_handler(CommandHandler("adultstuff", adultstuff))
-    app.add_handler(CommandHandler("tenderwhip", tenderwhip))
-    app.add_handler(CommandHandler("justhelp", justhelp))
-    app.add_handler(CommandHandler("faq", faq))
-    app.add_handler(CommandHandler("follow", follow))
-    app.add_handler(CommandHandler("touch", touch))
-    app.add_handler(CommandHandler("hi", hi))
-    app.add_handler(CommandHandler("bye", bye))
-    app.add_handler(CommandHandler("kitsun", kitsun))
 
-    print("Bot is running.")
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("tunein", tunein))
+    app.add_handler(CommandHandler("ua", ua))
+    app.add_handler(CommandHandler("bandmap", bandmap))
+    app.add_handler(CommandHandler("signal", signal))
+    app.add_handler(CommandHandler("static", static))
+    app.add_handler(CommandHandler("relay", relay))
+    app.add_handler(CommandHandler("pulse", pulse))
+    app.add_handler(CommandHandler("drift", drift))
+    app.add_handler(CommandHandler("uplink", uplink))
+
+    app.add_handler(CallbackQueryHandler(handle_callback))
+
+    print("Radio Resistance Bot is live.")
     app.run_polling()

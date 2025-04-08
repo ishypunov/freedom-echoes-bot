@@ -1,50 +1,33 @@
+# Radio Resistance Bot
 
-# Echoes of Freedom Telegram Bot
+A poetic, encrypted Telegram bot broadcasting signals of resistance and emotion.
 
-A poetic, anonymous Telegram bot that guides users through essays, emotional content, and digital intimacy. Built with `python-telegram-bot`.
+## 🎛 Available Commands
 
-## 🧠 Mind
-- `/echoes` — Essays, frontline reflections
-- `/faq` — Weird questions answered
-- `/follow` — Social links (Telegram, Instagram, Facebook, Linktree, YouTube)
+- /start — Launch bot & show full button menu
+- /tunein — Atmospheric intro with music
+- /ua — Ukrainian resistance links
+- /bandmap — Map of all commands
+- /signal — Frontline archive
+- /static — FAQ and Join form
+- /relay — Social channels
+- /pulse — Anonymous form (NGL / Email)
+- /drift — Adult content info
+- /uplink — Support via PayPal, Donorbox
 
-## 💋 Body
-- `/touch` — Soft chaos pricing for emotional nudes
-- `/tenderwhip` — Anonymous wishes via NGL or email
+## 🔌 Setup
 
-## 🌬 Spirit
-- `/justhelp` — How to support via PayPal, Wise, Donorbox, Linktree
+1. Clone the repo
+2. Add your `.env` file with:
+   ```
+   TOKEN=your_bot_token
+   ```
+3. Run with:
 
-## ⚙️ Control
-- `/hi` — Resume autoposting
-- `/bye` — Pause autoposting
+   ```bash
+   pip install python-telegram-bot
+   python main.py
+   ```
 
-## Hidden Gems
-- `/kitsun` — 😘
+Everything is encrypted. Nothing is forgotten.
 
-## 🛠 Setup
-
-1. Install dependencies:
-```bash
-pip install python-telegram-bot
-```
-
-2. Create `.env` file:
-```env
-TOKEN=your_telegram_bot_token
-```
-
-3. Run the bot:
-```bash
-python main.py
-```
-
-## 📁 File Structure
-
-- `main.py` — The core bot logic
-- `.env` — Your secret TOKEN
-- `README.md` — This file
-
----
-
-Echoes are silence wrapped in code.
