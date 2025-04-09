@@ -33,7 +33,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         if command in command_map:
             return await command_map[command](update, context)
 
-    await update.message.reply_text(
+    await update.message.reply_text("
         "📡 Transmission connected.\nWelcome to the Resistance Frequency.\n\nChoose your signal:",
         reply_markup=reply_markup
     )
@@ -41,7 +41,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def tunein(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [[InlineKeyboardButton("🎧 Tune it", url="https://youtu.be/nA-GnVrvFtw?si=fXDqtaTGCF7txWel")]]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text(
+    await update.message.reply_text("
         "🎙️ You’re tuned in.\n\n"
         "This is the clandestine frequency of free voices.\n"
         "The static hides truth, the silence screams louder.\n\n"
@@ -58,7 +58,7 @@ async def ua(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🌱 Tender Ukrainisation", url="https://t.me/tenderukrainisation")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text("🇺🇦 Ukrainian Frequency:
+    await update.message.reply_text(""🇺🇦 Ukrainian Frequency:
 Signals from cultural frontlines. Projects, voices, resistance.",
         reply_markup=reply_markup
     )
@@ -68,7 +68,7 @@ async def signal(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🧾 Decode the message", url="https://bit.ly/freedomechoes")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text(
+    await update.message.reply_text("
         "📡 Signal received:
 
 Fragments from the frontline.
@@ -81,7 +81,7 @@ async def static(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🛰 Apply to join", url="https://forms.gle/xob4piEzFbLKAuSP9")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text(
+    await update.message.reply_text("
         "📖 Static on the line:
 
 "
@@ -96,7 +96,7 @@ async def static(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def relay(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
+    await update.message.reply_text("
         "🛰 Relay stations online:
 
 "
@@ -116,7 +116,7 @@ async def pulse(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🔗 Ask me anything", url="https://tellonym.me/freedom.echoes")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text(
+    await update.message.reply_text("
         "🎛 Transmit your anonymous pulse:
 
 "
@@ -130,7 +130,7 @@ async def pulse(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def drift(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
+    await update.message.reply_text("
         "🎚 Drift into the encrypted zone
 
 "
@@ -149,7 +149,7 @@ async def drift(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def uplink(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text(
+    await update.message.reply_text("
         "🔌 Uplink your energy to the signal
 
 "
