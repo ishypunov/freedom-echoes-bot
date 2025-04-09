@@ -50,25 +50,118 @@ async def tunein(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 async def ua(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🇺🇦 Ukrainian front links coming soon...")
+    keyboard = [
+        [InlineKeyboardButton("📄 Google Docs – info", url="https://docs.google.com/document/d/1QY_kXlGk7ble4QTzPcJdNYtW6skksF5wz_ILEtHg82E/edit?usp=drivesdk")],
+        [InlineKeyboardButton("🇺🇦 Tymko's HQ", url="https://t.me/tymkoshelban")],
+        [InlineKeyboardButton("🌞 Sunshine Reggae", url="https://t.me/sunshinereggaee")],
+        [InlineKeyboardButton("📡 Freedom Echoes", url="https://t.me/freedomechoes")],
+        [InlineKeyboardButton("🌱 Tender Ukrainisation", url="https://t.me/tenderukrainisation")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "🇺🇦 Ukrainian Frequency:
+Signals from cultural frontlines. Projects, voices, resistance.",
+        reply_markup=reply_markup
+    )
 
 async def signal(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("📡 Archive signal detected...")
+    keyboard = [
+        [InlineKeyboardButton("🧾 Decode the message", url="https://bit.ly/freedomechoes")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "📡 Signal received:
+
+Fragments from the frontline.
+Echoes etched in silence.",
+        reply_markup=reply_markup
+    )
 
 async def static(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("📖 Static: FAQ & Join form coming soon...")
+    keyboard = [
+        [InlineKeyboardButton("🛰 Apply to join", url="https://forms.gle/xob4piEzFbLKAuSP9")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "📖 Static on the line:
+
+"
+        "— Is this anonymous? Yes.
+"
+        "— Can I share this? Only with those who listen between the waves.
+"
+        "— Who are you? A signal. A shimmer. A shadow of resistance.
+"
+        "— Want to join? Tap the satellite.",
+        reply_markup=reply_markup
+    )
 
 async def relay(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🛰 Relay stations: socials coming soon...")
+    await update.message.reply_text(
+        "🛰 Relay stations online:
+
+"
+        "• Telegram: https://t.me/tymkoshelban
+"
+        "• Instagram: https://instagram.com/echosoffreedomua
+"
+        "• Linktree: https://linktr.ee/freedomechoes
+"
+        "• Facebook: https://www.facebook.com/EchoesOfUAFreedom/
+"
+        "• YouTube: https://youtube.com/@freedomechoesua"
+    )
 
 async def pulse(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🎛 Anonymous pulse ready soon...")
+    keyboard = [
+        [InlineKeyboardButton("🔗 Ask me anything", url="https://tellonym.me/freedom.echoes")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text(
+        "🎛 Transmit your anonymous pulse:
+
+"
+        "Whisper into the void. Let the signal find its shape.
+
+"
+        "📧 Email: dod29022000@gmail.com
+"
+        "💬 Telegram: @tenderwhip",
+        reply_markup=reply_markup
+    )
 
 async def drift(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🎚 Drift mode: encrypted zone coming soon...")
+    await update.message.reply_text(
+        "🎚 Drift into the encrypted zone
+
+"
+        "This frequency transmits adult content.
+"
+        "My partner is aware and cool with it.
+
+"
+        "150₴ — disappearing photo
+"
+        "300₴ — disappearing video
+"
+        "300₴ — file photo
+"
+        "500₴ — file video"
+    )
 
 async def uplink(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🔌 Uplink: donate link coming soon...")
+    await update.message.reply_text(
+        "🔌 Uplink your energy to the signal
+
+"
+        "💸 Donation collected of my friends' behalf
+"
+        "PayPal / Wise: iishypunov@gmail.com
+"
+        "❤️ Donorbox → link
+"
+        "🌐 Linktree → [bit.ly/freedomechoes](https://bit.ly/freedomechoes)"
+    )
 
 if __name__ == '__main__':
     app = ApplicationBuilder().token(TOKEN).build()
