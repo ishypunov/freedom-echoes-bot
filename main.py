@@ -23,7 +23,6 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         command_map = {
             "tunein": tunein,
             "ua": ua,
-            "bandmap": bandmap,
             "signal": signal,
             "static": static,
             "relay": relay,
@@ -46,7 +45,7 @@ async def tunein(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🎙️ You’re tuned in.\n\n"
         "This is the clandestine frequency of free voices.\n"
         "The static hides truth, the silence screams louder.\n\n"
-        "Use /bandmap to navigate the spectrum.",
+        "Take this link, keep it close, play it when needed.",
         reply_markup=reply_markup
     )
 
