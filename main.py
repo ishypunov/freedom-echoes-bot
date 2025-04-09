@@ -58,8 +58,7 @@ async def ua(update: Update, context: ContextTypes.DEFAULT_TYPE):
         [InlineKeyboardButton("🌱 Tender Ukrainisation", url="https://t.me/tenderukrainisation")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text(
-        "🇺🇦 Ukrainian Frequency:
+    await update.message.reply_text("🇺🇦 Ukrainian Frequency:
 Signals from cultural frontlines. Projects, voices, resistance.",
         reply_markup=reply_markup
     )
