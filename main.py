@@ -9,8 +9,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [
         [InlineKeyboardButton("🎙️ /tunein", url="https://t.me/EchoTenderBot?start=tunein"),
          InlineKeyboardButton("🇺🇦 /ua", url="https://t.me/EchoTenderBot?start=ua")],
-        [InlineKeyboardButton("🗺 /bandmap", url="https://t.me/EchoTenderBot?start=bandmap"),
-         InlineKeyboardButton("📡 /signal", url="https://t.me/EchoTenderBot?start=signal")],
+        [InlineKeyboardButton("📡 /signal", url="https://t.me/EchoTenderBot?start=signal")],
         [InlineKeyboardButton("📖 /static", url="https://t.me/EchoTenderBot?start=static"),
          InlineKeyboardButton("🛰 /relay", url="https://t.me/EchoTenderBot?start=relay")],
         [InlineKeyboardButton("🎛 /pulse", url="https://t.me/EchoTenderBot?start=pulse"),
@@ -54,9 +53,6 @@ async def tunein(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def ua(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("🇺🇦 Ukrainian front links coming soon...")
 
-async def bandmap(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    await update.message.reply_text("🗺 Full bandmap coming soon...")
-
 async def signal(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("📡 Archive signal detected...")
 
@@ -79,9 +75,7 @@ if __name__ == '__main__':
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("tunein", tunein))
-    app.add_handler(CommandHandler("ua", ua))
-    app.add_handler(CommandHandler("bandmap", bandmap))
-    app.add_handler(CommandHandler("signal", signal))
+    app.add_handler(CommandHandler("ua", ua))    app.add_handler(CommandHandler("signal", signal))
     app.add_handler(CommandHandler("static", static))
     app.add_handler(CommandHandler("relay", relay))
     app.add_handler(CommandHandler("pulse", pulse))
