@@ -1,8 +1,9 @@
+
 import json
 import logging
 import os
 from aiogram import Bot, Dispatcher, types
-from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup, BotCommandScopeDefault
 from aiogram.filters import CommandStart, Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram import F
@@ -80,6 +81,22 @@ async def about_handler(message: types.Message):
     text = "Цей бот об'єднує всі наші канали для зручного доступу." if lang == 'ua' else "This bot unites all our channels for easy access."
     await message.answer(text)
 
+@dp.message(Command("donate"))
+async def donate_handler(message: types.Message):
+    lang = user_lang.get(message.from_user.id, 'ua')
+    text = "🙏 Ви можете підтримати проєкт тут: https://bit.ly/freedomechoes" if lang == 'ua' else "🙏 You can support the project here: https://bit.ly/freedomechoes"
+    await message.answer(text)
+
+@dp.message(Command("faq"))
+async def faq_handler(message: types.Message):
+    lang = user_lang.get(message.from_user.id, 'ua')
+    text = (
+        "❓ Часті питання:\n\n1. Хто створив бот? — Українські ветерани.\n2. Як приєднатися до проєкту? — Напиши нам через канал."
+        if lang == 'ua' else
+        "❓ FAQ:\n\n1. Who created this bot? — Ukrainian veterans.\n2. How to join the project? — Contact us via the channel."
+    )
+    await message.answer(text)
+
 @dp.message(Command("broadcast"))
 async def broadcast_handler(message: types.Message):
     if message.from_user.id != ADMIN_ID:
@@ -106,7 +123,6 @@ app.router.add_get("/", handle)
 
 if __name__ == "__main__":
     import asyncio
-    from aiogram import executor
 
     async def main():
         await dp.start_polling(bot)
